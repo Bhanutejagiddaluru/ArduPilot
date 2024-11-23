@@ -1,104 +1,116 @@
-# Pixhawk Servo Connection
+# 🚀 Pixhawk Servo Connection Guide
 
-This repository provides a simple and clear guide to connect and configure servos with the Pixhawk flight controller. The goal is to demonstrate how to control servos using RC transmitter channels and configure relay functionality for on/off control.
-
----
-
-## Key Features
-
-- **Channel 6 (CH-6)** on the transmitter is mapped to **Servo 14 (AUX 6)** on Pixhawk.
-- **Channel 9 (CH-9)** on the transmitter is mapped to **Servo 13 (AUX 5)** on Pixhawk.
-- **Flight modes** are configured to switch relays on or off for connected servos.
+This repository provides an **easy-to-follow guide** for connecting and configuring servos with a Pixhawk flight controller. Whether you're a beginner or an advanced user, this guide simplifies the process of controlling servos with RC transmitter channels and setting up relay functionality.
 
 ---
 
-## Hardware Requirements
+## ✨ Key Features
 
-To follow this guide, you will need the following:
-
-1. **Pixhawk Flight Controller**
-2. **Servos (e.g., SG90)** – 2 pieces
-3. **Transmitter** – e.g., Taranis or similar, with at least 9 channels
-4. **Receiver** – Supporting PWM/PPM/S.Bus outputs
-5. **Connection cables**
+- 🎮 **Channel Mapping:**  
+  - **CH-6** (Transmitter) → **Servo 14 (AUX 6)** on Pixhawk.  
+  - **CH-9** (Transmitter) → **Servo 13 (AUX 5)** on Pixhawk.
+- 🔄 **Relay Functionality:** Configure **on/off switches** for servo control.
+- ⚡ **Easy Setup:** Step-by-step wiring and software configuration.
 
 ---
 
-## Wiring Diagram
+## 📦 What You Need
 
-Refer to the image below for detailed wiring instructions:
+| **Hardware**                    | **Quantity** |
+|----------------------------------|--------------|
+| 🖥️ **Pixhawk Flight Controller** | 1            |
+| ⚙️ **SG90 Servos (or equivalent)** | 2            |
+| 🎛️ **RC Transmitter** (e.g., Taranis, 9+ channels) | 1 |
+| 📡 **Receiver** (supports PWM/PPM/S.Bus) | 1 |
+| 🔌 **Connection Cables**         | As needed    |
+
+---
+
+## 🖼️ Wiring Diagram
+
+Connect your components based on the wiring diagram below:
 
 ![Wiring Diagram](how_to_connect_servo_to_pixhwack.jpg)
 
 ---
 
-## Step-by-Step Instructions
+## 🔧 Step-by-Step Setup
 
-### 1. Wiring the Components
+### **1️⃣ Wiring Your Components**
 
-- Connect the servo signal wires to the appropriate AUX pins on Pixhawk:
-  - **Servo 14** connects to **AUX 6**.
-  - **Servo 13** connects to **AUX 5**.
-- Connect your RC transmitter to the receiver. Ensure the receiver is properly linked to the Pixhawk flight controller using PWM, PPM, or S.Bus output.
-
----
-
-### 2. Assign Servo Functions in QGroundControl or Mission Planner
-
-1. Open your flight controller configuration software (e.g., QGroundControl or Mission Planner).
-2. Assign functions to the servo outputs:
-   - **Servo 13 Function**: Set to `RCIN9` (linked to Channel 9 on your transmitter).
-   - **Servo 14 Function**: Set to `RCIN6` (linked to Channel 6 on your transmitter).
-3. Configure PWM values:
-   - Minimum: 800 PWM
-   - Maximum: 2200 PWM
-   - Trim: 1500 PWM (neutral position)
+1. Connect **Servo 13** to **AUX 5** and **Servo 14** to **AUX 6** on the Pixhawk.
+2. Ensure the receiver is properly linked to the transmitter (via PWM/PPM/S.Bus output).
+3. Double-check all connections to avoid shorts or incorrect wiring.
 
 ---
 
-### 3. Set Up Flight Modes
+### **2️⃣ Configuring Servo Functions**
 
-1. Navigate to the **Flight Modes Setup** section in the software.
-2. Map the transmitter channels to relay control functions:
-   - **Channel 8**: Configure to "Relay On/Off" for controlling Servo 13.
-   - **Channel 6**: Configure to "Relay On/Off" for controlling Servo 14.
-3. Ensure the correct PWM values for channel switches:
-   - Set thresholds to trigger relays when switches are toggled.
+In **QGroundControl** or **Mission Planner**:
 
----
+1. **Open the Servo Settings:**
+   - Assign **Servo 13** to `RCIN9` (linked to **Channel 9** on the transmitter).
+   - Assign **Servo 14** to `RCIN6` (linked to **Channel 6** on the transmitter).
 
-### 4. Test the Configuration
-
-1. Power on the Pixhawk and connect it to QGroundControl or Mission Planner.
-2. Use the transmitter switches (CH-6 and CH-9) to test the movement and relay control of Servo 14 and Servo 13.
-3. Verify that the servos respond correctly:
-   - Toggle switches to move servos or activate relays.
-   - Adjust PWM values if necessary for smoother operation.
+2. **Set PWM Values**:
+   - **Minimum:** 800 PWM
+   - **Maximum:** 2200 PWM
+   - **Trim:** 1500 PWM (neutral position)
 
 ---
 
-## Example Configuration Files
+### **3️⃣ Flight Mode Setup**
 
-If you'd like to skip manual setup, you can use the preconfigured parameter files included in this repository:
-- **`QGroundControl_settings.txt`** – Example configuration for QGroundControl.
-- **`MissionPlanner_params.param`** – Example parameters for Mission Planner.
-
-Simply upload the files to your flight controller to replicate the settings.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this guide.
+1. Go to the **Flight Modes Setup** section in your software.
+2. Map transmitter switches to relay control:
+   - **CH-8 → Relay On/Off for Servo 13**.
+   - **CH-6 → Relay On/Off for Servo 14**.
+3. Verify PWM thresholds for activating relay functions.
 
 ---
 
-## Additional Notes
+### **4️⃣ Testing Your Setup**
 
-- Ensure your servos are compatible with the Pixhawk controller (check voltage and current ratings).
-- Double-check wiring to avoid damage to components.
-- For troubleshooting tips, refer to the official Pixhawk documentation or community forums.
+1. Power on your Pixhawk and connect it to your configuration software.
+2. Toggle the **CH-6** and **CH-9** switches on your transmitter:
+   - **CH-6 controls Servo 14 (AUX 6)**.
+   - **CH-9 controls Servo 13 (AUX 5)**.
+3. Observe servo movement and relay activation.
+4. Adjust PWM values if necessary for smooth operation.
 
 ---
 
-Let me know if you encounter any issues or have questions about the setup!
+## 📂 Repository Contents
+
+| **File**                        | **Description**                                        |
+|----------------------------------|-------------------------------------------------------|
+| `how_to_connect_servo_to_pixhwack.jpg` | Detailed wiring diagram for servo connection.        |
+| `QGroundControl_settings.txt`   | Example configuration file for QGroundControl.        |
+| `MissionPlanner_params.param`   | Example parameter file for Mission Planner.           |
+| `README.md`                     | This step-by-step guide.                              |
+| `LICENSE`                       | License details (MIT License).                        |
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**. Feel free to use, modify, and share it as needed.
+
+---
+
+## 💡 Pro Tips
+
+- **Check Compatibility:** Ensure your servos are compatible with the Pixhawk (voltage and current ratings).
+- **Secure Wiring:** Use zip ties or clips to keep your wiring neat and avoid accidental disconnections.
+- **Calibrate Servos:** Use the transmitter and software to fine-tune servo positions for precise control.
+
+---
+
+## 🔗 Connect with the Community
+
+- Explore the official [Pixhawk documentation](https://docs.px4.io).
+- Share your projects and issues in the [Pixhawk community forums](https://discuss.px4.io).
+
+---
+
+Feel free to reach out if you have questions or need help!
