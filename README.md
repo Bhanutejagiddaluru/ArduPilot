@@ -55,11 +55,47 @@ The module used here is the **AP_Periph DroneCAN to PWM Adapter**:
    - Click **Update Firmware** and choose the **`AP_Periph.bin`** file downloaded earlier.
    - Wait for the update process to complete.
 
-![Step 1](DroneCAN-guitool_1.jpg)  
-![Step 2](DroneCAN-guitool_2.jpg)  
-![Step 3](DroneCAN-guitool_3.jpg)  
-![Step 4](DroneCAN-guitool_4.jpg)
+### Step 1: Open the DroneCAN GUI Tool
+![Step 1](DroneCAN-guitool_1.jpg)
 
+After installing the **DroneCAN GUI Tool**, open it and follow these steps:
+
+- **Set Local Node ID**:  
+  - Uncheck the "Set local node ID" box.  
+  - This ensures the tool operates in anonymous mode for detecting connected DroneCAN devices.
+
+- **Verify Connected Nodes**:  
+  - Once the module is connected, the tool will list all detected nodes under the **Online Nodes** section.  
+  - You should see your module listed with details such as **Node ID**, **Name**, and **Status**.
+
+### Step 2: Connect the DroneCAN Module
+![Step 2](DroneCAN-guitool_2.jpg)
+- **Connect the Module:**  
+  - Attach your DroneCAN module to your PC using a USB-CAN adapter.  
+  - Ensure that all wiring is secure and that the module has sufficient power.  
+
+- **Detect the Node:**  
+  - After connecting, the **DroneCAN GUI Tool** will display the detected module in the **Online Nodes** section.  
+  - Verify the **Node ID**, **Mode**, and **Health Status** to ensure the connection is successful.
+
+### Step 3: Verify and Prepare for Firmware Update
+![Step 3](DroneCAN-guitool_3.jpg)
+- **Select the Node:**  
+  - Click on the node listed in the **Online Nodes** section to view its details.  
+  - Ensure the module's **Mode** is "Operational OK" and the health status is displayed as "OK".
+
+- **Start Firmware Update:**  
+  - Click on **Update Firmware** to begin updating the module's software.
+
+### Step 4: Update the Firmware
+![Step 4](DroneCAN-guitool_4.jpg)
+- **Select the Firmware File:**  
+  - Choose the previously downloaded `AP_Periph.bin` file from your system.  
+  - Confirm the selection and start the firmware update process.
+
+- **Wait for Completion:**  
+  - The DroneCAN GUI Tool will flash the firmware onto the module.  
+  - Once the process completes, the module will reboot automatically.
 ---
 
 ### Step 3: Configuring the DroneCAN Module in Pixhawk
