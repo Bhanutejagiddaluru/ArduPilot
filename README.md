@@ -33,7 +33,7 @@ Connect your components based on the wiring diagram below:
 
 ---
 
-## 🔧 Step-by-Step Setup
+## Step-by-Step Setup 🔧
 
 ###  1. Wiring the Components
 
@@ -80,13 +80,13 @@ In **QGroundControl** or **Mission Planner**:
 
 ---
 
-## 📜 License
+## License 📜
 
 This project is licensed under the **MIT License**. Feel free to use, modify, and share it as needed.
 
 ---
 
-## 💡 Pro Tips
+## Pro Tips 💡
 
 - **Check Compatibility:** Ensure your servos are compatible with the Pixhawk (voltage and current ratings).
 - **Secure Wiring:** Use zip ties or clips to keep your wiring neat and avoid accidental disconnections.
@@ -94,7 +94,7 @@ This project is licensed under the **MIT License**. Feel free to use, modify, an
 
 ---
 
-## 🔗 Connect with the Community
+## Connect with the Community 🔗 
 
 -  [Pixhawk- DroneCAN](https://docs.px4.io).
 - [Pixhawk- Lidar](https://discuss.px4.io).
