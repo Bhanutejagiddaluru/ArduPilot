@@ -9,7 +9,7 @@ This branch provides a guide to connect and configure the **DroneCAN** module wi
 
 The following circuit diagram shows how to connect the **DroneCAN** module to the Pixhawk:
 
-![Wiring Diagram](image.png)
+![Wiring Diagram](how_to_connect_DroneCAN_to_pixhwack.jpg)
 
 ---
 
