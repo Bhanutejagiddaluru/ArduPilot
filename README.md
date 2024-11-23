@@ -136,7 +136,7 @@ Configure the following parameters in **Mission Planner** or **QGroundControl** 
 
 Refer to the image below for the correct parameter settings:
 
-![DroneCAN Parameters](DroneCAN_parameters file.jpg)
+![DroneCAN Parameters](DroneCAN_parameters_file.jpg)
 
 ---
 
