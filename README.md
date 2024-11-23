@@ -21,114 +21,146 @@ The following circuit diagram shows how to connect the **DroneCAN** module to th
 The module used here is the **AP_Periph DroneCAN to PWM Adapter**:  
 **Model**: CAN-L4-PWM  
 **Features**:
-- CAN Node
-- DroneCAN Protocol
-- Supports up to **9 PWM outputs**
+- Supports **DroneCAN Protocol**
+- Provides **up to 9 PWM outputs**
+- Works as a CAN Node for seamless communication with the Pixhawk
 - Official Documentation: [Matek Systems CAN-L4-PWM](https://www.mateksys.com/?portfolio=can-l4-pwm)
 
-#### Flashing Software to the Module
-1. **Download the Firmware:**
-   - Visit the [ArduPilot firmware site](https://firmware.ardupilot.org/AP_Periph/latest/MatekL431-DShot/).
-   - Download the **`AP_Periph.bin`** file.
+---
 
-2. **Install the DroneCAN GUI Tool:**
-   - Download the GUI Tool: [DroneCAN GUI Tool](https://firmware.ardupilot.org/Tools/CAN_GUI/).
+### Step 2: Flashing the Module with Firmware
+
+#### Download the Required Software
+
+1. **Download the Firmware**:
+   - Visit the [ArduPilot firmware site](https://firmware.ardupilot.org/AP_Periph/latest/MatekL431-DShot/).
+   - Download the file: **`AP_Periph.bin`**.
+
+2. **Install the DroneCAN GUI Tool**:
+   - Download the GUI Tool from [DroneCAN GUI Tool](https://firmware.ardupilot.org/Tools/CAN_GUI/).
    - For Windows: Download and install **`Dronecan_gui_tool-1.2.27-win64.msi`**.
 
 ---
 
-### Step 2: Using the DroneCAN GUI Tool
+### Step 3: Using the DroneCAN GUI Tool to Flash Firmware
 
 #### Flashing Steps
-1. Open the **DroneCAN GUI Tool** after installation.
 
-2. **Connect the Module:**
-   - Connect the DroneCAN module to your PC using a USB-CAN adapter.
-   - Ensure proper wiring and power supply.
+1. **Connect the Module:**
+   - Connect the **DroneCAN module** to the Pixhawk CAN port.
+   - Plug in the Pixhawk to your PC using a USB cable.
+   - Ensure all connections are secure and the module has power (refer to the wiring diagram for setup).
 
-3. **Set Up Local Node ID:**
-   - Open the GUI tool interface and **uncheck** the "Set local node ID" box.
-   - Verify connected nodes in the **Online Nodes** section.
+2. **Open the DroneCAN GUI Tool**:
 
-4. **Flash the Firmware:**
-   - Select your connected node from the list.
-   - Click **Update Firmware** and choose the **`AP_Periph.bin`** file downloaded earlier.
-   - Wait for the update process to complete.
+   ![Step 1](DroneCAN-guitool_1.jpg)
 
-### Step 1: Open the DroneCAN GUI Tool
-![Step 1](DroneCAN-guitool_1.jpg)
+   - **Set Local Node ID**:
+     - Uncheck the "Set local node ID" box in the GUI tool. This enables the tool to operate in **anonymous mode** for detecting connected DroneCAN devices.
+   - **Verify Connected Nodes**:
+     - The **Online Nodes** section will list all detected devices. Look for the **MatekL431-DShot** node with details like Node ID, Name, and Status.
 
-After installing the **DroneCAN GUI Tool**, open it and follow these steps:
+3. **Select the Node and Begin Firmware Update**:
 
-- **Set Local Node ID**:  
-  - Uncheck the "Set local node ID" box.  
-  - This ensures the tool operates in anonymous mode for detecting connected DroneCAN devices.
+   ![Step 2](DroneCAN-guitool_2.jpg)
 
-- **Verify Connected Nodes**:  
-  - Once the module is connected, the tool will list all detected nodes under the **Online Nodes** section.  
-  - You should see your module listed with details such as **Node ID**, **Name**, and **Status**.
+   - Select the **MatekL431-DShot** node in the **Online Nodes** list.
+   - Click on **Update Firmware** to initiate the firmware flashing process.
 
-### Step 2: Connect the DroneCAN Module
-![Step 2](DroneCAN-guitool_2.jpg)
-- **Connect the Module:**  
-  - Attach your DroneCAN module to your PC using a USB-CAN adapter.  
-  - Ensure that all wiring is secure and that the module has sufficient power.  
+4. **Flash the Firmware**:
+   - Select the previously downloaded **`AP_Periph.bin`** file.
+   - Ensure the module's **Mode** changes to "Software Update" during the process.
+   - Once the firmware is flashed successfully, the module's **Mode** will change back to "Operational OK" with a healthy status.
 
-- **Detect the Node:**  
-  - After connecting, the **DroneCAN GUI Tool** will display the detected module in the **Online Nodes** section.  
-  - Verify the **Node ID**, **Mode**, and **Health Status** to ensure the connection is successful.
-
-### Step 3: Verify and Prepare for Firmware Update
-![Step 3](DroneCAN-guitool_3.jpg)
-- **Select the Node:**  
-  - Click on the node listed in the **Online Nodes** section to view its details.  
-  - Ensure the module's **Mode** is "Operational OK" and the health status is displayed as "OK".
-
-- **Start Firmware Update:**  
-  - Click on **Update Firmware** to begin updating the module's software.
-
-### Step 4: Update the Firmware
-![Step 4](DroneCAN-guitool_4.jpg)
-- **Select the Firmware File:**  
-  - Choose the previously downloaded `AP_Periph.bin` file from your system.  
-  - Confirm the selection and start the firmware update process.
-
-- **Wait for Completion:**  
-  - The DroneCAN GUI Tool will flash the firmware onto the module.  
-  - Once the process completes, the module will reboot automatically.
 ---
+
+### Step 4: Fetch and Modify Parameters
+
+1. **Fetch Parameters from the Module**:
+
+   ![Step 3](DroneCAN-guitool_3.jpg)
+
+   - Click the **Fetch All** button to retrieve all parameters from the DroneCAN module.
+   - Wait until the fetching process is complete, and the full list of parameters is displayed.
+
+2. **Modify Key Parameters**:
+
+   ![Step 4](DroneCAN-guitool_4.jpg)
+
+   Update the following parameters based on your requirements:
+
+   | **Parameter**          | **Value** |
+   |-------------------------|-----------|
+   | `OUT_BLH_MASK`          | 0         |
+   | `ESC_PWM_TYPE`          | 0         |
+   | `OUT5_FUNCTION`         | 63        |
+   | `OUT6_FUNCTION`         | 64        |
+
+   **Explanation**:
+   - **`OUTn_FUNCTION`**: Set to `50 + Servo Number` (e.g., `OUT5_FUNCTION = 63` for Servo 13, `OUT6_FUNCTION = 64` for Servo 14).
+   - **`OUT_BLH_MASK`**: Set to `0` to disable the use of DShot.
+   - **`ESC_PWM_TYPE`**: Set to `0` for normal PWM signals.
+
+---
+
+### Step 5: Finalizing the Setup
+
+1. **Reboot the Module**:
+   - After modifying the parameters, restart the DroneCAN module to apply the changes.
+   - The module will initialize with the updated configuration.
+
+2. **Test the Setup**:
+   - Connect the Pixhawk to your RC transmitter and verify the servo outputs.
+   - Test Servo 13 and Servo 14 functionality based on the configured parameters.
+
+---
+
+### Summary
+You have successfully flashed and configured the DroneCAN module to work with Pixhawk. This setup allows seamless integration of PWM outputs via DroneCAN for Servo 13 and Servo 14. For additional troubleshooting, refer to the official DroneCAN documentation or the community forums.
+
 
 ### Step 3: Configuring the DroneCAN Module in Pixhawk
 
-After updating the DroneCAN module, configure the Pixhawk flight controller to recognize and utilize the module.
+After flashing and updating the DroneCAN module, the next step is to configure your Pixhawk flight controller to recognize and utilize the module for servo control.
 
-#### Parameters in Flight Controller
-Set the following parameters in **Mission Planner** or **QGroundControl**:
+---
 
-| **Parameter**          | **Value** |
-|-------------------------|-----------|
-| `CAN_D1_PROTOCOL`       | 1         |
-| `CAN_P1_DRIVER`         | 1         |
-| `CAN_D1_UC_ESC_OF`      | 4         |
-| `CAN_D1_UC_ESC_BM`      | Select appropriate values |
-| `CAN_D1_UC_SRV_BM`      | Select Servo 13 and Servo 14 |
-| `BRD_SAFETYENABLE`      | 0         |
+#### Parameters in the Flight Controller
 
-#### How to Select Servos
-- Use the **`CAN_D1_UC_SRV_BM`** parameter to enable **Servo 13** and **Servo 14**.
-- Refer to the image below for setting the parameters:
+Configure the following parameters in **Mission Planner** or **QGroundControl** to enable communication and functionality with the DroneCAN module:
+
+| **Parameter**          | **Value**                     |
+|-------------------------|-------------------------------|
+| `CAN_D1_PROTOCOL`       | 1 (Enable DroneCAN Protocol) |
+| `CAN_P1_DRIVER`         | 1 (Enable CAN Bus Driver)    |
+| `CAN_D1_UC_ESC_OF`      | 4                             |
+| `CAN_D1_UC_ESC_BM`      | Leave default or select custom values |
+| `CAN_D1_UC_SRV_BM`      | Enable Servo 13 and Servo 14 |
+| `BRD_SAFETYENABLE`      | 0 (Disable Safety Switch)    |
+
+---
+
+#### Selecting Servos
+
+1. Open the **Parameters** tab in your configuration software (e.g., Mission Planner or QGroundControl).
+2. Modify the **`CAN_D1_UC_SRV_BM`** parameter to enable specific servos:
+   - Enable **Servo 13** and **Servo 14**.
+   - These correspond to AUX pins 5 and 6, respectively.
+
+Refer to the image below for the correct parameter settings:
 
 ![DroneCAN Parameters](DroneCAN_parameters file.jpg)
 
 ---
 
-### Step 4: Testing and Resetting
+#### Finalizing Configuration
 
-1. Reset the Pixhawk flight controller after configuring the parameters.
-2. Ensure all connections are secure and the module is powered correctly.
-3. Test the functionality of Servo 13 and Servo 14 using your RC transmitter.
+1. Save the updated parameters in the configuration tool.
+2. Reboot the Pixhawk to apply the changes.
+3. Verify that the DroneCAN module and servos are functioning correctly.
 
 ---
+
 
 ## Conclusion
 
