@@ -1,8 +1,7 @@
 
 # Pixhawk-DroneCAN Connection Guide 🚀
 
-   This branch provides a guide to connect and configure the **DroneCAN** module with the Pixhawk flight controller. 
-   For a detailed understanding of servo-to-Pixhawk connections, refer to the **Pixhawk-Servo** branch.
+This branch provides a guide to connect and configure the **DroneCAN** module with the Pixhawk flight controller. For a detailed understanding of servo-to-Pixhawk connections, refer to the **Pixhawk-Servo** branch.
 
 You can access the **Pixhawk-Servo** branch here:  
 [Pixhawk-Servo Branch on GitHub](https://github.com/Bhanutejagiddaluru/ArduPilot/tree/Pixhawk-Servo)
