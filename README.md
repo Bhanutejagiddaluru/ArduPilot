@@ -48,7 +48,7 @@ This guide explains how to configure servos on AUX pins of Pixhawk using RC tran
 
 ## Wiring Diagram
 
-![Wiring Diagram](how_to_connect_servo_to_pixhawk.jpg)
+![Wiring Diagram](how_to_connect_servo_to_pixhwack.jpg)
 
 ---
 
