@@ -37,15 +37,6 @@ This guide explains how to configure servos on AUX pins of Pixhawk using RC tran
 
 ---
 
-## Configuration Files
-
-- **QGroundControl_settings.txt**:
-  - Example configuration for mapping servos and channels.
-- **MissionPlanner_params.param**:
-  - Parameters to directly upload to Mission Planner.
-
----
-
 ## Wiring Diagram
 
 ![Wiring Diagram](how_to_connect_servo_to_pixhwack.jpg)
@@ -57,9 +48,3 @@ This guide explains how to configure servos on AUX pins of Pixhawk using RC tran
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-### How to Use This Repository
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your_username/pixhawk-servo-connection.git
