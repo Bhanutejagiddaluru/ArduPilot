@@ -7,10 +7,9 @@ This repository provides an **easy-to-follow guide** for connecting and configur
 ## ✨ Key Features
 
 - 🎮 **Channel Mapping:**  
-  - **CH-6** (Transmitter) → **Servo 14 (AUX 6)** on Pixhawk.  
-  - **CH-9** (Transmitter) → **Servo 13 (AUX 5)** on Pixhawk.
-  - **Relay Functionality:** Configure **on/off switches** for servo control.
-  - **Easy Setup:** Step-by-step wiring and software configuration.
+  - **Channel 6 (CH-6)** on the transmitter is mapped to **Servo 14 (AUX 6)** on Pixhawk.
+  - **Channel 9 (CH-9)** on the transmitter is mapped to **Servo 13 (AUX 5)** on Pixhawk.
+  - **Relay Functionality:** Configure **on/off switches** for servo control in Flight modes.
 
 ---
 
@@ -38,9 +37,10 @@ Connect your components based on the wiring diagram below:
 
 ### **1️⃣ Wiring Your Components**
 
-1. Connect **Servo 13** to **AUX 5** and **Servo 14** to **AUX 6** on the Pixhawk.
-2. Ensure the receiver is properly linked to the transmitter (via PWM/PPM/S.Bus output).
-3. Double-check all connections to avoid shorts or incorrect wiring.
+- Connect the servo signal wires to the appropriate AUX pins on Pixhawk:
+  - **Servo 14** connects to **AUX 6**.
+  - **Servo 13** connects to **AUX 5**.
+- Connect your RC transmitter to the receiver. Ensure the receiver is properly linked to the Pixhawk flight controller using PWM, PPM, or S.Bus output.
 
 ---
 
@@ -48,8 +48,8 @@ Connect your components based on the wiring diagram below:
 
 In **QGroundControl** or **Mission Planner**:
 
-1. **Open the Servo Settings:**
-   - Assign **Servo 13** to `RCIN9` (linked to **Channel 9** on the transmitter).
+1. **Open the Parameters list:**
+   - Assign **Servo 13 Function** to `RCIN9` (linked to **Channel 9** on the transmitter).
    - Assign **Servo 14** to `RCIN6` (linked to **Channel 6** on the transmitter).
 
 2. **Set PWM Values**:
@@ -63,8 +63,8 @@ In **QGroundControl** or **Mission Planner**:
 
 1. Go to the **Flight Modes Setup** section in your software.
 2. Map transmitter switches to relay control:
-   - **CH-8 → Relay On/Off for Servo 13**.
-   - **CH-6 → Relay On/Off for Servo 14**.
+   - **CH-9 → Configure to "Relay On/Off" for controlling Servo 13**.
+   - **CH-6 → Configure to "Relay On/Off" for controlling Servo 14**.
 3. Verify PWM thresholds for activating relay functions.
 
 ---
