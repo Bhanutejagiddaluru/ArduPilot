@@ -6,10 +6,10 @@ This repository provides an **easy-to-follow guide** for connecting and configur
 
 ## Key Features
 
-- 🎮 **Channel Mapping:**  
-  - **Channel 6 (CH-6)** on the transmitter is mapped to **Servo 14 (AUX 6)** on Pixhawk.
-  - **Channel 9 (CH-9)** on the transmitter is mapped to **Servo 13 (AUX 5)** on Pixhawk.
-  - **Relay Functionality:** Configure **on/off switches** for servo control in Flight modes.
+**Channel Mapping  🎮:**  
+- **Channel 6 (CH-6)** on the transmitter is mapped to **Servo 14 (AUX 6)** on Pixhawk.
+- **Channel 9 (CH-9)** on the transmitter is mapped to **Servo 13 (AUX 5)** on Pixhawk.
+- **Relay Functionality:** Configure **on/off switches** for servo control in Flight modes.
 
 ---
 
@@ -35,7 +35,7 @@ Connect your components based on the wiring diagram below:
 
 ## 🔧 Step-by-Step Setup
 
-### **1. Wiring Your Components**
+###  1. Wiring the Components
 
 - Connect the servo signal wires to the appropriate AUX pins on Pixhawk:
   - **Servo 14** connects to **AUX 6**.
@@ -44,7 +44,7 @@ Connect your components based on the wiring diagram below:
 
 ---
 
-### **2. Configuring Servo Functions**
+### 2. Configuring Servo Functions
 
 In **QGroundControl** or **Mission Planner**:
 
@@ -59,7 +59,7 @@ In **QGroundControl** or **Mission Planner**:
 
 ---
 
-### **3. Flight Mode Setup**
+### 3. Flight Mode Setup
 
 1. Go to the **Flight Modes Setup** section in your software.
 2. Map transmitter switches to relay control:
@@ -69,7 +69,7 @@ In **QGroundControl** or **Mission Planner**:
 
 ---
 
-### **4. Testing Your Setup**
+### 4. Testing Your Setup
 
 1. Power on your Pixhawk and connect it to your configuration software.
 2. Toggle the **CH-6** and **CH-9** switches on your transmitter:
