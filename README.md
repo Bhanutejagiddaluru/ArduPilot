@@ -1,4 +1,4 @@
-# 🚀 Pixhawk Servo Connection Guide
+# Pixhawk Servo Connection Guide
 
 This repository provides an **easy-to-follow guide** for connecting and configuring servos with a Pixhawk flight controller. Whether you're a beginner or an advanced user, this guide simplifies the process of controlling servos with RC transmitter channels and setting up relay functionality.
 
@@ -9,8 +9,8 @@ This repository provides an **easy-to-follow guide** for connecting and configur
 - 🎮 **Channel Mapping:**  
   - **CH-6** (Transmitter) → **Servo 14 (AUX 6)** on Pixhawk.  
   - **CH-9** (Transmitter) → **Servo 13 (AUX 5)** on Pixhawk.
-- 🔄 **Relay Functionality:** Configure **on/off switches** for servo control.
-- ⚡ **Easy Setup:** Step-by-step wiring and software configuration.
+  - **Relay Functionality:** Configure **on/off switches** for servo control.
+  - **Easy Setup:** Step-by-step wiring and software configuration.
 
 ---
 
@@ -26,7 +26,7 @@ This repository provides an **easy-to-follow guide** for connecting and configur
 
 ---
 
-## 🖼️ Wiring Diagram
+## Wiring Diagram
 
 Connect your components based on the wiring diagram below:
 
@@ -80,18 +80,6 @@ In **QGroundControl** or **Mission Planner**:
 
 ---
 
-## 📂 Repository Contents
-
-| **File**                        | **Description**                                        |
-|----------------------------------|-------------------------------------------------------|
-| `how_to_connect_servo_to_pixhwack.jpg` | Detailed wiring diagram for servo connection.        |
-| `QGroundControl_settings.txt`   | Example configuration file for QGroundControl.        |
-| `MissionPlanner_params.param`   | Example parameter file for Mission Planner.           |
-| `README.md`                     | This step-by-step guide.                              |
-| `LICENSE`                       | License details (MIT License).                        |
-
----
-
 ## 📜 License
 
 This project is licensed under the **MIT License**. Feel free to use, modify, and share it as needed.
@@ -108,9 +96,8 @@ This project is licensed under the **MIT License**. Feel free to use, modify, an
 
 ## 🔗 Connect with the Community
 
-- Explore the official [Pixhawk documentation](https://docs.px4.io).
-- Share your projects and issues in the [Pixhawk community forums](https://discuss.px4.io).
+-  [Pixhawk- DroneCAN](https://docs.px4.io).
+- [Pixhawk- Lidar](https://discuss.px4.io).
 
 ---
 
-Feel free to reach out if you have questions or need help!
