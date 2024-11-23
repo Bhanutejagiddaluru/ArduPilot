@@ -1,104 +1,103 @@
-# Pixhawk Servo Connection
 
-This repository provides a simple and clear guide to connect and configure servos with the Pixhawk flight controller. The goal is to demonstrate how to control servos using RC transmitter channels and configure relay functionality for on/off control.
+# Pixhawk-DroneCAN Connection Guide 🚀
 
----
-
-## Key Features
-
-- **Channel 6 (CH-6)** on the transmitter is mapped to **Servo 14 (AUX 6)** on Pixhawk.
-- **Channel 9 (CH-9)** on the transmitter is mapped to **Servo 13 (AUX 5)** on Pixhawk.
-- **Flight modes** are configured to switch relays on or off for connected servos.
+This branch provides a guide to connect and configure the **DroneCAN** module with the Pixhawk flight controller. For a detailed understanding of servo-to-Pixhawk connections, refer to the **Pixhawk-Servo** branch.
 
 ---
 
-## Hardware Requirements
+## Circuit Wiring Diagram
 
-To follow this guide, you will need the following:
+The following circuit diagram shows how to connect the **DroneCAN** module to the Pixhawk:
 
-1. **Pixhawk Flight Controller**
-2. **Servos (e.g., SG90)** – 2 pieces
-3. **Transmitter** – e.g., Taranis or similar, with at least 9 channels
-4. **Receiver** – Supporting PWM/PPM/S.Bus outputs
-5. **Connection cables**
+![Wiring Diagram](image.png)
 
 ---
 
-## Wiring Diagram
+## Step-by-Step Guide 🔧
 
-Refer to the image below for detailed wiring instructions:
+### Step 1: Flash the DroneCAN Module
 
-![Wiring Diagram](how_to_connect_servo_to_pixhwack.jpg)
+#### About the Module
+The module used here is the **AP_Periph DroneCAN to PWM Adapter**:  
+**Model**: CAN-L4-PWM  
+**Features**:
+- CAN Node
+- DroneCAN Protocol
+- Supports up to **9 PWM outputs**
+- Official Documentation: [Matek Systems CAN-L4-PWM](https://www.mateksys.com/?portfolio=can-l4-pwm)
 
----
+#### Flashing Software to the Module
+1. **Download the Firmware:**
+   - Visit the [ArduPilot firmware site](https://firmware.ardupilot.org/AP_Periph/latest/MatekL431-DShot/).
+   - Download the **`AP_Periph.bin`** file.
 
-## Step-by-Step Instructions
-
-### 1. Wiring the Components
-
-- Connect the servo signal wires to the appropriate AUX pins on Pixhawk:
-  - **Servo 14** connects to **AUX 6**.
-  - **Servo 13** connects to **AUX 5**.
-- Connect your RC transmitter to the receiver. Ensure the receiver is properly linked to the Pixhawk flight controller using PWM, PPM, or S.Bus output.
-
----
-
-### 2. Assign Servo Functions in QGroundControl or Mission Planner
-
-1. Open your flight controller configuration software (e.g., QGroundControl or Mission Planner).
-2. Assign functions to the servo outputs:
-   - **Servo 13 Function**: Set to `RCIN9` (linked to Channel 9 on your transmitter).
-   - **Servo 14 Function**: Set to `RCIN6` (linked to Channel 6 on your transmitter).
-3. Configure PWM values:
-   - Minimum: 800 PWM
-   - Maximum: 2200 PWM
-   - Trim: 1500 PWM (neutral position)
+2. **Install the DroneCAN GUI Tool:**
+   - Download the GUI Tool: [DroneCAN GUI Tool](https://firmware.ardupilot.org/Tools/CAN_GUI/).
+   - For Windows: Download and install **`Dronecan_gui_tool-1.2.27-win64.msi`**.
 
 ---
 
-### 3. Set Up Flight Modes
+### Step 2: Using the DroneCAN GUI Tool
 
-1. Navigate to the **Flight Modes Setup** section in the software.
-2. Map the transmitter channels to relay control functions:
-   - **Channel 8**: Configure to "Relay On/Off" for controlling Servo 13.
-   - **Channel 6**: Configure to "Relay On/Off" for controlling Servo 14.
-3. Ensure the correct PWM values for channel switches:
-   - Set thresholds to trigger relays when switches are toggled.
+#### Flashing Steps
+1. Open the **DroneCAN GUI Tool** after installation.
 
----
+2. **Connect the Module:**
+   - Connect the DroneCAN module to your PC using a USB-CAN adapter.
+   - Ensure proper wiring and power supply.
 
-### 4. Test the Configuration
+3. **Set Up Local Node ID:**
+   - Open the GUI tool interface and **uncheck** the "Set local node ID" box.
+   - Verify connected nodes in the **Online Nodes** section.
 
-1. Power on the Pixhawk and connect it to QGroundControl or Mission Planner.
-2. Use the transmitter switches (CH-6 and CH-9) to test the movement and relay control of Servo 14 and Servo 13.
-3. Verify that the servos respond correctly:
-   - Toggle switches to move servos or activate relays.
-   - Adjust PWM values if necessary for smoother operation.
+4. **Flash the Firmware:**
+   - Select your connected node from the list.
+   - Click **Update Firmware** and choose the **`AP_Periph.bin`** file downloaded earlier.
+   - Wait for the update process to complete.
 
----
-
-## Example Configuration Files
-
-If you'd like to skip manual setup, you can use the preconfigured parameter files included in this repository:
-- **`QGroundControl_settings.txt`** – Example configuration for QGroundControl.
-- **`MissionPlanner_params.param`** – Example parameters for Mission Planner.
-
-Simply upload the files to your flight controller to replicate the settings.
+![Step 1](DroneCAN-guitool_1.jpg)  
+![Step 2](DroneCAN-guitool_2.jpg)  
+![Step 3](DroneCAN-guitool_3.jpg)  
+![Step 4](DroneCAN-guitool_4.jpg)
 
 ---
 
-## License
+### Step 3: Configuring the DroneCAN Module in Pixhawk
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this guide.
+After updating the DroneCAN module, configure the Pixhawk flight controller to recognize and utilize the module.
+
+#### Parameters in Flight Controller
+Set the following parameters in **Mission Planner** or **QGroundControl**:
+
+| **Parameter**          | **Value** |
+|-------------------------|-----------|
+| `CAN_D1_PROTOCOL`       | 1         |
+| `CAN_P1_DRIVER`         | 1         |
+| `CAN_D1_UC_ESC_OF`      | 4         |
+| `CAN_D1_UC_ESC_BM`      | Select appropriate values |
+| `CAN_D1_UC_SRV_BM`      | Select Servo 13 and Servo 14 |
+| `BRD_SAFETYENABLE`      | 0         |
+
+#### How to Select Servos
+- Use the **`CAN_D1_UC_SRV_BM`** parameter to enable **Servo 13** and **Servo 14**.
+- Refer to the image below for setting the parameters:
+
+![DroneCAN Parameters](DroneCAN_parameters file.jpg)
 
 ---
 
-## Additional Notes
+### Step 4: Testing and Resetting
 
-- Ensure your servos are compatible with the Pixhawk controller (check voltage and current ratings).
-- Double-check wiring to avoid damage to components.
-- For troubleshooting tips, refer to the official Pixhawk documentation or community forums.
+1. Reset the Pixhawk flight controller after configuring the parameters.
+2. Ensure all connections are secure and the module is powered correctly.
+3. Test the functionality of Servo 13 and Servo 14 using your RC transmitter.
 
 ---
 
-Let me know if you encounter any issues or have questions about the setup!
+## Conclusion
+
+Congratulations! You have successfully set up and configured the **DroneCAN** module with your Pixhawk. This setup allows for seamless communication between the module and flight controller, enabling advanced functionality.
+
+For any troubleshooting, refer to the official documentation or community forums.
+
+---
