@@ -42,7 +42,7 @@ The module used here is the **AP_Periph DroneCAN to PWM Adapter**:
 
 ---
 
-### Step 3: Using the DroneCAN GUI Tool to Flash Firmware
+### Step 2.1: Using the DroneCAN GUI Tool to Flash Firmware
 
 #### Flashing Steps
 
@@ -74,7 +74,7 @@ The module used here is the **AP_Periph DroneCAN to PWM Adapter**:
 
 ---
 
-### Step 4: Fetch and Modify Parameters
+### Step 2.2: Fetch and Modify Parameters
 
 1. **Fetch Parameters from the Module**:
 
@@ -101,29 +101,16 @@ The module used here is the **AP_Periph DroneCAN to PWM Adapter**:
    - **`OUT_BLH_MASK`**: Set to `0` to disable the use of DShot.
    - **`ESC_PWM_TYPE`**: Set to `0` for normal PWM signals.
 
----
-
-### Step 5: Finalizing the Setup
-
-1. **Reboot the Module**:
+   **Reboot the Module**:
    - After modifying the parameters, restart the DroneCAN module to apply the changes.
    - The module will initialize with the updated configuration.
-
-2. **Test the Setup**:
-   - Connect the Pixhawk to your RC transmitter and verify the servo outputs.
-   - Test Servo 13 and Servo 14 functionality based on the configured parameters.
-
+   
+   - You have successfully flashed and configured the DroneCAN module to work with Pixhawk. This setup allows seamless integration of PWM outputs via DroneCAN for Servo 13 and Servo 14.
 ---
-
-### Summary
-You have successfully flashed and configured the DroneCAN module to work with Pixhawk. This setup allows seamless integration of PWM outputs via DroneCAN for Servo 13 and Servo 14. For additional troubleshooting, refer to the official DroneCAN documentation or the community forums.
-
 
 ### Step 3: Configuring the DroneCAN Module in Pixhawk
 
-After flashing and updating the DroneCAN module, the next step is to configure your Pixhawk flight controller to recognize and utilize the module for servo control.
-
----
+After flashing and updating the DroneCAN module, the next step is to configure your Pixhawk flight controller to recognize and utilize the DroneCAN module.
 
 #### Parameters in the Flight Controller
 
@@ -149,7 +136,7 @@ Configure the following parameters in **Mission Planner** or **QGroundControl** 
 
 Refer to the image below for the correct parameter settings:
 
-![DroneCAN Parameters](DroneCAN_parameters file.jpg)
+![DroneCAN Parameters](DroneCAN_parameters_file.jpg)
 
 ---
 
