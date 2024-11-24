@@ -96,7 +96,7 @@ This project is licensed under the **MIT License**. Feel free to use, modify, an
 
 ## Connect with the Community 🔗 
 
--  [Pixhawk- DroneCAN](https://docs.px4.io).
+-  [Pixhawk- DroneCAN]((https://github.com/Bhanutejagiddaluru/ArduPilot/tree/Pixhawk-DroneCAN).
 - [Pixhawk- Lidar](https://discuss.px4.io).
 
 ---
