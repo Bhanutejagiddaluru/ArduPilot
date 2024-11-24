@@ -1,104 +1,55 @@
-# Pixhawk Servo Connection
+# ArduPilot Repository Overview 🚀
 
-This repository provides a simple and clear guide to connect and configure servos with the Pixhawk flight controller. The goal is to demonstrate how to control servos using RC transmitter channels and configure relay functionality for on/off control.
-
----
-
-## Key Features
-
-- **Channel 6 (CH-6)** on the transmitter is mapped to **Servo 14 (AUX 6)** on Pixhawk.
-- **Channel 9 (CH-9)** on the transmitter is mapped to **Servo 13 (AUX 5)** on Pixhawk.
-- **Flight modes** are configured to switch relays on or off for connected servos.
+Welcome to the **ArduPilot** repository! This repository is designed to provide detailed guides, configurations, and wiring diagrams for Pixhawk modules to integrate servos, DroneCAN modules, LiDAR systems, and more.
 
 ---
 
-## Hardware Requirements
+## Branches Overview
 
-To follow this guide, you will need the following:
+### 1. **Pixhawk-Servo Branch**  
+This branch contains everything you need to know about connecting and configuring servos with the Pixhawk flight controller. It includes:
+- **Wiring Diagrams**: Step-by-step visuals for servo connections.
+- **Parameter Settings**: Instructions to configure your flight controller for servos.
+- **RC Mapping**: Learn how to control your servos using RC transmitter channels.
 
-1. **Pixhawk Flight Controller**
-2. **Servos (e.g., SG90)** – 2 pieces
-3. **Transmitter** – e.g., Taranis or similar, with at least 9 channels
-4. **Receiver** – Supporting PWM/PPM/S.Bus outputs
-5. **Connection cables**
-
----
-
-## Wiring Diagram
-
-Refer to the image below for detailed wiring instructions:
-
-![Wiring Diagram](how_to_connect_servo_to_pixhwack.jpg)
+Access the branch here:  
+👉 [Pixhawk-Servo Branch](https://github.com/Bhanutejagiddaluru/ArduPilot/tree/Pixhawk-Servo)
 
 ---
 
-## Step-by-Step Instructions
+### 2. **Pixhawk-DroneCAN Branch**  
+This branch focuses on integrating and configuring a **DroneCAN** module with the Pixhawk flight controller.  
 
-### 1. Wiring the Components
+Key highlights include:
+- **Module Overview**: Learn about the AP_Periph DroneCAN to PWM Adapter.
+- **Firmware Flashing**: Step-by-step instructions for updating the DroneCAN module firmware.
+- **Parameter Configuration**: Instructions to configure the DroneCAN module for servo operation.
+- **Wiring Diagrams**: Visual guidance for proper module setup.
 
-- Connect the servo signal wires to the appropriate AUX pins on Pixhawk:
-  - **Servo 14** connects to **AUX 6**.
-  - **Servo 13** connects to **AUX 5**.
-- Connect your RC transmitter to the receiver. Ensure the receiver is properly linked to the Pixhawk flight controller using PWM, PPM, or S.Bus output.
-
----
-
-### 2. Assign Servo Functions in QGroundControl or Mission Planner
-
-1. Open your flight controller configuration software (e.g., QGroundControl or Mission Planner).
-2. Assign functions to the servo outputs:
-   - **Servo 13 Function**: Set to `RCIN9` (linked to Channel 9 on your transmitter).
-   - **Servo 14 Function**: Set to `RCIN6` (linked to Channel 6 on your transmitter).
-3. Configure PWM values:
-   - Minimum: 800 PWM
-   - Maximum: 2200 PWM
-   - Trim: 1500 PWM (neutral position)
+Access the branch here:  
+👉 [Pixhawk-DroneCAN Branch](https://github.com/Bhanutejagiddaluru/ArduPilot/tree/Pixhawk-DroneCAN)
 
 ---
 
-### 3. Set Up Flight Modes
+### 3. **Pixhawk-LiDAR Branch**  
+This branch provides a detailed guide for integrating **LiDAR sensors** with the Pixhawk flight controller.  
 
-1. Navigate to the **Flight Modes Setup** section in the software.
-2. Map the transmitter channels to relay control functions:
-   - **Channel 8**: Configure to "Relay On/Off" for controlling Servo 13.
-   - **Channel 6**: Configure to "Relay On/Off" for controlling Servo 14.
-3. Ensure the correct PWM values for channel switches:
-   - Set thresholds to trigger relays when switches are toggled.
+Included resources:
+- **Supported LiDAR Models**: Compatibility details for various LiDAR systems.
+- **Wiring Guides**: Instructions to connect LiDAR sensors to Pixhawk via I2C or UART ports.
+- **Parameter Configuration**: Steps to configure the flight controller to utilize LiDAR for features like obstacle detection, altitude hold, and terrain following.
 
----
-
-### 4. Test the Configuration
-
-1. Power on the Pixhawk and connect it to QGroundControl or Mission Planner.
-2. Use the transmitter switches (CH-6 and CH-9) to test the movement and relay control of Servo 14 and Servo 13.
-3. Verify that the servos respond correctly:
-   - Toggle switches to move servos or activate relays.
-   - Adjust PWM values if necessary for smoother operation.
+Access the branch here:  
+👉 [Pixhawk-LiDAR Branch](https://github.com/Bhanutejagiddaluru/ArduPilot/tree/Pixhawk-LiDAR)
 
 ---
 
-## Example Configuration Files
+## About This Repository
 
-If you'd like to skip manual setup, you can use the preconfigured parameter files included in this repository:
-- **`QGroundControl_settings.txt`** – Example configuration for QGroundControl.
-- **`MissionPlanner_params.param`** – Example parameters for Mission Planner.
+This repository is a collection of guides and tools for using Pixhawk flight controllers with various modules and peripherals. Each branch is dedicated to a specific integration, offering:
+- **Detailed Documentation**
+- **Wiring Diagrams**
+- **Configuration Files**
+- **Troubleshooting Guides**
 
-Simply upload the files to your flight controller to replicate the settings.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this guide.
-
----
-
-## Additional Notes
-
-- Ensure your servos are compatible with the Pixhawk controller (check voltage and current ratings).
-- Double-check wiring to avoid damage to components.
-- For troubleshooting tips, refer to the official Pixhawk documentation or community forums.
-
----
-
-Let me know if you encounter any issues or have questions about the setup!
+Explore the branches and follow the detailed guides to set up your Pixhawk for advanced functionalities. 🚁
